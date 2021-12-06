@@ -102,8 +102,14 @@ public class Steque<Item> implements Iterable<Item> {
      * return the number of elements currently in the steque.
      * @return size as integer.
      */
+     //Time complexity: O(n)
+    //Space complexity: o(1)
     public int size() {
-
+        int n=0;
+        for(Item item:this){
+            n++;
+        }
+        return n;
     }
     
     /**
@@ -120,5 +126,6 @@ public class Steque<Item> implements Iterable<Item> {
         st.push(12);
         System.out.println(st.pop());
         System.out.println(st.isEmpty());
+        System.out.println(st.size());
     }
 }
