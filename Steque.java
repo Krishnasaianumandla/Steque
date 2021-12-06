@@ -30,13 +30,17 @@ import java.util.NoSuchElementException;
  *
  */
 public class Steque<Item> implements Iterable<Item> {
-
+    private Node first,last;
+    private class Node{
+        Item item;
+        Node next;
+    }
 
     /**
      * constructs a steque object.
      */
     public Steque() {
-
+        first=last=null;
     }
     
     
@@ -44,8 +48,15 @@ public class Steque<Item> implements Iterable<Item> {
      * inserts an item in the steque in queue fashion.
      * @param item Item to be inserted.
      */
+    //Time complexity: O(1)
+    //Space complexity: o(n)
     public void enqueue(Item item) {
-
+        if(item==null)throw new IllegalArgumentException();
+        Node oldlast=last;
+        last= new Node();
+        last.item=item;
+        if(first==null) first=last;
+        else oldlast.next=last;
     }
     
     
@@ -53,32 +64,52 @@ public class Steque<Item> implements Iterable<Item> {
      * inserts an item in the steque in stack fashion.
      * @param item Item to be inserted.
      */
+    // Time complexity:O(1)
+    //Space complexity:o(n)
     public void push(Item item) {
-
+        if(item==null) throw new IllegalArgumentException();
+        Node oldfirst = first;
+        first= new Node();
+        first.item=item;
+        first.next=oldfirst;
+        if(last==null)last=first;
     }
     
     /**
      * pops a least recent item in steque.
      * @return Item object from steque.
      */
+    //Time complexity: O(1)
+    //Space complexity: o(n)
     public Item pop() {
-
+        if(isEmpty())throw new NoSuchElementException();
+        Item item = first.item;
+        first = first.next;
+        return item;
     }
     
     /**
      * checks to see if steque is empty.
      * @return true if steque is empty, false otherwise.
      */
+    //Time complexity: O(1)
+    //Space complexity: o(1)
     public boolean isEmpty() {
-
+        return first==null || last==null;
     }
     
     /**
      * return the number of elements currently in the steque.
      * @return size as integer.
      */
+     //Time complexity: O(n)
+    //Space complexity: o(1)
     public int size() {
-
+        int n=0;
+        for(Item item:this){
+            n++;
+        }
+        return n;
     }
     
     /**
@@ -88,5 +119,13 @@ public class Steque<Item> implements Iterable<Item> {
      */
     public Iterator<Item> iterator() {
 
+    }
+    public static void main(String args[]){
+        Steque<Integer> st =new Steque<Integer>();
+        st.enqueue(7);
+        st.push(12);
+        System.out.println(st.pop());
+        System.out.println(st.isEmpty());
+        System.out.println(st.size());
     }
 }
