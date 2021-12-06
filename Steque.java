@@ -46,7 +46,7 @@ public class Steque<Item> implements Iterable<Item> {
     }
     private void resize(){
         int newCapacity=2*stack.length;
-        Item[] newstack= (Item[])new Object[newCapacity];
+        Item[] newstack= (Item[]) new Object[newCapacity];
         for(int i=0; i<stack.length;i++){
             newstack[i]=stack[i];
         }
@@ -121,7 +121,24 @@ public class Steque<Item> implements Iterable<Item> {
      * stored in steque.
      * 
      */
+    //Time complexity :O(1)
+    //Space complexity: 0
     public Iterator<Item> iterator() {
-
+        return new ArrayIterator();
+    }
+    public class ArrayIterator implements Iterator<Item>{
+        public int i=size-1;
+        public boolean hasNext(){
+            return i>=0;
+        }
+        public void remove(){
+            throw new UnsupportedOperationException();
+        }
+        public Item next(){
+            if(!hasNext()) throw new NoSuchElementException();
+            Item item=stack[i];
+            i--;
+            return item;
+        }
     }
 }
