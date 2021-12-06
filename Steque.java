@@ -93,9 +93,9 @@ public class Steque<Item> implements Iterable<Item> {
      * @return true if steque is empty, false otherwise.
      */
     //Time complexity: O(1)
-    //Space complexity: o(n)
+    //Space complexity: o(1)
     public boolean isEmpty() {
-
+        return first==null || last==null;
     }
     
     /**
@@ -119,5 +119,6 @@ public class Steque<Item> implements Iterable<Item> {
         st.enqueue(7);
         st.push(12);
         System.out.println(st.pop());
+        System.out.println(st.isEmpty());
     }
 }
