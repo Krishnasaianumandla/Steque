@@ -86,8 +86,14 @@ public class Steque<Item> implements Iterable<Item> {
      * pops a least recent item in steque.
      * @return Item object from steque.
      */
+    //Time complexity: O(1)
+    //Space complecity:o(1)
     public Item pop() {
-
+        if(isEmpty())throw new NoSuchElementException();
+        Item item = stack[size-1];
+        stack[size-1]=null;
+        size--;
+        return item;
     }
     
     /**
