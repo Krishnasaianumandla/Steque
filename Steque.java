@@ -79,6 +79,7 @@ public class Steque<Item> implements Iterable<Item> {
      * pops a least recent item in steque.
      * @return Item object from steque.
      */
+    //Time complexity: O
     public Item pop() {
 
     }
