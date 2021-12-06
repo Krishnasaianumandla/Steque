@@ -73,8 +73,13 @@ public class Steque<Item> implements Iterable<Item> {
      * inserts an item in the steque in stack fashion.
      * @param item Item to be inserted.
      */
+    //Time complexity: O(1)
+    //Space complecity:o(n)
     public void push(Item item) {
-
+        if(item==null)throw new IllegalArgumentException();
+        if(size>=stack.length)resize();
+        stack[size]=item;
+        size++;
     }
     
     /**
@@ -108,11 +113,5 @@ public class Steque<Item> implements Iterable<Item> {
      */
     public Iterator<Item> iterator() {
 
-    }
-    public static void main(String[] args){
-        Steque<Integer> ReArr=new Steque<Integer>();
-        ReArr.enqueue(75);
-        ReArr.enqueue(28);
-        ReArr.enqueue(96);
     }
 }
