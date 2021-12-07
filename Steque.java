@@ -78,8 +78,7 @@ public class Steque<Item> implements Iterable<Item> {
     public void push(Item item) {
         if(item==null)throw new IllegalArgumentException();
         if(size>=stack.length)resize();
-        stack[size]=item;
-        size++;
+        stack[size++]=item;
     }
     
     /**
@@ -91,8 +90,7 @@ public class Steque<Item> implements Iterable<Item> {
     public Item pop() {
         if(isEmpty())throw new NoSuchElementException();
         Item item = stack[size-1];
-        stack[size-1]=null;
-        size--;
+        stack[--size]=null;
         return item;
     }
     
